@@ -1,0 +1,41 @@
+import java.util.*;
+public class student_grades{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        ArrayList<Double>grades=new ArrayList<>();
+        System.out.println("Enter grades(Enter done if finish)");
+        while(true){
+            String input=sc.next();
+            if(input.equalsIgnoreCase("done")){
+                break;
+            }
+            try{
+                Double grade=Double.parseDouble(input);
+                grades.add(grade);
+            }
+            catch(NumberFormatException e){
+                System.out.println("Enter correct input please!!");
+            }
+        }
+        if(grades.size()==0){
+            System.out.println("No grades entered!!");
+            return;
+        }
+        Double sum=0.0;
+        Double highest=grades.get(0);
+        Double lowest=grades.get(0);
+        for(Double grade:grades){
+            sum+=grade;
+            if(grade>highest){
+                highest=grade;
+            }
+            if(grade<lowest){
+                lowest=grade;
+            }
+        }
+        Double average=sum/grades.size();
+        System.out.println("Average grade: " + average);
+        System.out.println("Highest grade: " + highest);
+        System.out.println("Lowest grade: " + lowest);
+    }
+}
